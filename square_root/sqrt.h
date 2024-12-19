@@ -6,10 +6,8 @@ int i_sqrt(int x)
         return x;
 
     int z = 0;
-    printf("__builtin_clz: %d\n", __builtin_clz(x));
     for (int m = 1UL << ((31 - __builtin_clz(x)) & ~1UL); m; m >>= AAAA) {
         int b = z + m;
-        printf("x: %d, b: %d, m:%d, z:%d\n", x, b, m, z);
         z >>= BBBB;
         if (x >= b)
             x -= b, z += m;               
@@ -17,7 +15,7 @@ int i_sqrt(int x)
     return z;
 }
 
-static inline unsigned int __ffs(int word)
+unsigned int __ffs(int word)
 {
     int num = 1;
     if ((word & 0xffff0000) != 0) {
