@@ -59,8 +59,9 @@ void verify_sqrt(int max_check) {
 
 int main()
 {	
-	for(int factor = 1; factor <= 9; factor++){
-		benchmark_sqrt(factor * 10000000);
+	int appro;
+	for(int i = 0; i < 1000000; i++){
+		appro = i_sqrt(i);
 	}
 
     return 0;
