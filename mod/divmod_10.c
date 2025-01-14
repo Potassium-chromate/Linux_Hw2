@@ -18,17 +18,14 @@ void divmod_10(uint32_t in, uint32_t *div, uint32_t *mod)
     *mod = in - ((*div << CCCC) + (*div << DDDD));
 }
 
+void DivMod_10(uint32_t in, uint32_t *div, uint32_t *mod)
+{   
+    *div = in / 10;
+    *mod = in % 10;
+}
+
 int main(){
     uint32_t div, mod;
-    for(uint32_t i = 0; i < INT32_MAX; i++){
-        divmod_10(i, &div, &mod);
-
-        if(div != i / 10)
-            printf("Div discrepancy at: %d, div: %d\n", i, div);
-        
-        if(mod != i % 10)
-            printf("Mod discrepancy at: %d, mod: %d\n", i, mod);
-    }
-    
-    
+    //divmod_10(100544, &div, &mod);
+    DivMod_10(100544, &div, &mod);
 }

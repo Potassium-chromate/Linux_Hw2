@@ -11,7 +11,7 @@ void divmod_9(uint32_t in, uint32_t *div, uint32_t *mod)
     uint32_t q, r;
     uint32_t n = in + (in >> 31 & 8);
     q = (n >> 1) + (n >> 2) + (n >> 3);     //0.875n
-    q = q + (q >> 6);                       //
+    q = q + (q >> 6);                       //0.8886
     q = q + (q >> 12) + (q >> 24);
     q = q >> 3;
     r = n - q * 9;
