@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <limits.h>
 unsigned popcount(unsigned v)
 {
     unsigned n;
@@ -35,15 +35,9 @@ unsigned mod_3_v2(unsigned n){
 }
 
 int main(){
-    //int max = -1;
-    for(int i = 0; i < 1000000; i++){
-    
-        if((i % 3) != (mod_3_v2(i))){
-            printf("Discrepency happened at: mod_3(%d) = %d\n",i , mod_3_v2(i));
-        }
-        //int temp = mod_3_v2(i);
-        //max = (max > temp)? max: temp;
+    int temp;
+    for(int i = 0; i < 100000; i++){
+   		temp = mod_3_v2(i);
     }
-    //printf("%d\n",max);
     return 0;
 }
