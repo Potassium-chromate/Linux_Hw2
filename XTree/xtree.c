@@ -69,7 +69,7 @@ void xt_destroy(struct xt_tree *tree)
 
     free(tree);
 }
-
+// Find the leftest child of n
 struct xt_node *xt_first(struct xt_node *n)
 {
     if (!xt_left(n))
@@ -77,7 +77,7 @@ struct xt_node *xt_first(struct xt_node *n)
 
     return xt_first(xt_left(n));
 }
-
+// Find the rightest child of n
 struct xt_node *xt_last(struct xt_node *n)
 {
     if (!xt_right(n))
@@ -335,12 +335,13 @@ static inline void xt_replace_left(struct xt_node *n, struct xt_node *l)
 static void __xt_remove(struct xt_node **root, struct xt_node *del)
 {
     if (xt_right(del)) {
+        // least is the leftest child of del
         struct xt_node *least = xt_first(xt_right(del));
         if (del == *root)
             *root = least;
 
-        xt_replace_right(del, AAAA);
-        xt_update(root, BBBB);
+        xt_replace_right(del, least); //AAAA
+        xt_update(root, xt_right(least)); //BBBB
         return;
     }
 
@@ -349,8 +350,8 @@ static void __xt_remove(struct xt_node **root, struct xt_node *del)
         if (del == *root)
             *root = most;
 
-        xt_replace_left(del, CCCC);
-        xt_update(root, DDDD);
+        xt_replace_left(del, most); //CCCC
+        xt_update(root, xt_left(most)); //DDDD
         return;
     }
 
