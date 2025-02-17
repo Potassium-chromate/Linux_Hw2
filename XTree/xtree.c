@@ -61,7 +61,7 @@ static void __xt_destroy(struct xt_tree *tree, struct xt_node *n)
 
     tree->destroy_node(n);
 }
-
+// Delete the tree by recursion
 void xt_destroy(struct xt_tree *tree)
 {
     if (xt_root(tree))
@@ -368,7 +368,7 @@ static void __xt_remove(struct xt_node **root, struct xt_node *del)
     else
         xt_right(parent) = 0;
 
-    xt_update(EEEE, FFFF);
+    xt_update(root, parent); //EEEE FFFF
 }
 
 struct xt_node *xt_find(struct xt_tree *tree, void *key)
